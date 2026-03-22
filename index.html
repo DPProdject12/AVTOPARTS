@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parts+ - Магазин автозапчастей</title>
+    <title>Parts+ — Магазин автозапчастей</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2c3e50;
-            --secondary: #e74c3c;
-            --accent: #3498db;
-            --light: #ecf0f1;
-            --dark: #1a2530;
+            --primary: #111827;
+            --secondary: #ef4444;
+            --accent: #2563eb;
+            --light: #f8fafc;
+            --dark: #020617;
             --gray: #7f8c8d;
             --success: #27ae60;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -45,7 +45,7 @@
             padding: 0 20px;
         }
 
-        /* Header - Исправленная версия */
+        /* Header */
         header {
             background-color: var(--primary);
             color: white;
@@ -80,7 +80,6 @@
             color: var(--secondary);
         }
 
-        /* Исправленная навигация */
         nav ul {
             display: flex;
             list-style: none;
@@ -224,71 +223,7 @@
             color: var(--primary);
         }
 
-        /* Секция подбора по авто */
-        .auto-selection {
-            padding: 80px 0;
-            background-color: white;
-        }
-
-        .selection-form {
-            background-color: var(--light);
-            border-radius: var(--border-radius);
-            padding: 40px;
-            box-shadow: var(--shadow);
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .selection-form h3 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: var(--primary);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--dark);
-        }
-
-        .form-control {
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-            font-family: 'Roboto', sans-serif;
-            font-size: 1rem;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-
-        .search-results {
-            margin-top: 40px;
-            display: none;
-        }
-
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        /* Features - Исправленная секция */
+        /* Features */
         .features {
             padding: 80px 0;
             background-color: white;
@@ -420,16 +355,26 @@
 
         .product-img {
             height: 200px;
-            background-color: #eee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            color: var(--gray);
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            background-color: #f0f0f0;
+            overflow: hidden;
+            position: relative;
         }
 
-        .product-info {
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+
+        .product-img::after {
+            display: none;
+        }
+.product-info {
             padding: 25px;
         }
 
@@ -500,7 +445,7 @@
             top: 0;
             right: -100%;
             width: 100%;
-            max-width: 450px;
+            max-width: 500px;
             height: 100%;
             background-color: white;
             box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
@@ -551,12 +496,14 @@
             background-color: #f1f1f1;
             border-radius: 8px;
             margin-right: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--gray);
             flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .cart-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .cart-item-info {
@@ -612,6 +559,47 @@
             padding: 5px;
         }
 
+        /* Customer Info Form */
+        .customer-info {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+        }
+
+        .customer-info h4 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
         .cart-footer {
             padding: 25px;
             border-top: 1px solid #eee;
@@ -623,7 +611,7 @@
             justify-content: space-between;
             font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .checkout-btn {
@@ -643,7 +631,7 @@
             background-color: #219653;
         }
 
-        /* Footer - Доработанный */
+        /* Footer */
         footer {
             background-color: var(--dark);
             color: white;
@@ -690,7 +678,6 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            cursor: pointer;
         }
 
         .footer-links a:hover {
@@ -708,29 +695,12 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            cursor: pointer;
-            transition: all 0.3s;
-            padding: 5px;
-            border-radius: 4px;
-        }
-
-        .contact-item:hover {
-            background-color: rgba(255, 255, 255, 0.05);
         }
 
         .contact-item i {
             color: var(--accent);
             font-size: 1.2rem;
             width: 20px;
-        }
-
-        .contact-item a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .contact-item a:hover {
-            color: var(--accent);
         }
 
         .copyright {
@@ -741,125 +711,7 @@
             font-size: 0.95rem;
         }
 
-        /* Newsletter Subscription */
-        .newsletter-form {
-            margin-top: 15px;
-        }
-
-        .newsletter-input {
-            display: flex;
-            background: #34495e;
-            border-radius: 30px;
-            overflow: hidden;
-            padding: 5px;
-        }
-
-        .newsletter-input input {
-            flex: 1;
-            border: none;
-            outline: none;
-            padding: 12px 15px;
-            background: #34495e;
-            color: white;
-            font-size: 0.95rem;
-        }
-
-        .newsletter-input input::placeholder {
-            color: #bdc3c7;
-        }
-
-        .newsletter-input button {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 0 20px;
-            cursor: pointer;
-            border-radius: 30px;
-            transition: background-color 0.3s;
-        }
-
-        .newsletter-input button:hover {
-            background-color: #2980b9;
-        }
-
-        /* Модальные окна для информации */
-        .info-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1200;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .info-modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background-color: white;
-            border-radius: var(--border-radius);
-            width: 90%;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: var(--shadow);
-            animation: modalFadeIn 0.3s;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: var(--border-radius) var(--border-radius) 0 0;
-        }
-
-        .modal-header h3 {
-            margin: 0;
-        }
-
-        .close-modal {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            line-height: 1;
-        }
-
-        .modal-body {
-            padding: 25px;
-        }
-
-        .modal-body h4 {
-            color: var(--primary);
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
-        .modal-body p {
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        .modal-body ul {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Responsive - Исправленная навигация */
+        /* Responsive */
         @media (max-width: 1100px) {
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -897,10 +749,6 @@
                 width: 250px;
                 text-align: center;
             }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
         }
 
         @media (max-width: 768px) {
@@ -926,7 +774,6 @@
                 flex-direction: column;
             }
             
-            /* На мобильных скрываем текст навигации, оставляем только иконки */
             nav a span {
                 display: none;
             }
@@ -938,15 +785,6 @@
             
             nav ul {
                 gap: 5px;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .selection-form {
-                padding: 20px;
             }
         }
 
@@ -971,18 +809,306 @@
                 max-width: 100%;
             }
             
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
             .search-box input {
                 width: 150px;
             }
-            
-            .modal-content {
-                width: 95%;
+        }
+    
+        /* Footer Modals + Accordion */
+        .site-modal-overlay{
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,.6);
+            display:none;
+            align-items:center;
+            justify-content:center;
+            padding:20px;
+            z-index:2000;
+        }
+        .site-modal{
+            width:min(860px, 100%);
+            max-height:min(80vh, 720px);
+            background:white;
+            color:#222;
+            border-radius: 14px;
+            overflow:hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,.35);
+            display:flex;
+            flex-direction:column;
+        }
+        .site-modal-header{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:12px;
+            padding:16px 18px;
+            background: var(--primary);
+            color:white;
+        }
+        .site-modal-header h3{
+            margin:0;
+            font-size:1.15rem;
+        }
+        .site-modal-close{
+            background:transparent;
+            border:none;
+            color:white;
+            font-size:1.6rem;
+            cursor:pointer;
+            line-height:1;
+        }
+        .site-modal-body{
+            padding:18px;
+            overflow:auto;
+        }
+        .site-modal-body h4{
+            margin:14px 0 8px;
+            color:var(--primary);
+        }
+        .site-modal-body p, .site-modal-body li{
+            color:#333;
+        }
+        .site-modal-body ul{
+            padding-left:18px;
+        }
+        .footer-links a[data-modal]{
+            cursor:pointer;
+        }
+        @media (max-width: 768px){
+            .footer-column{position:relative;}
+            .footer-column h3{
+                cursor:pointer;
+                user-select:none;
+            }
+            .footer-column .footer-links,
+            .footer-column .contact-info{
+                display:none;
+                margin-top:10px;
+            }
+            .footer-column.open .footer-links,
+            .footer-column.open .contact-info{
+                display:block;
+            }
+            .footer-column h3::before{
+                content:"▸";
+                display:inline-block;
+                margin-right:10px;
+                transform: translateY(-1px);
+                transition: transform .2s;
+                color: var(--accent);
+            }
+            .footer-column.open h3::before{
+                transform: rotate(90deg) translateX(2px);
             }
         }
-    </style>
+
+    
+        /* Footer "Информация" accordion */
+        .footer-accordion li{margin-bottom:6px;}
+        .footer-acc-btn{
+            width:100%;
+            display:flex;
+            align-items:center;
+            gap:10px;
+            background:transparent;
+            border:none;
+            color:white;
+            text-align:left;
+            padding:6px 0;
+            cursor:pointer;
+            font-size:0.95rem;
+        }
+        .footer-acc-btn i{font-size:.85rem; opacity:.8}
+        .footer-acc-btn .chev{
+            margin-left:auto;
+            transition: transform .2s;
+            opacity:.8;
+        }
+        .footer-acc-panel{
+            display:none;
+            padding:8px 10px 10px 22px;
+            border-left:2px solid rgba(255,255,255,.15);
+            margin:4px 0 10px 6px;
+            color:#d7e1ee;
+            font-size:0.9rem;
+            line-height:1.45;
+        }
+        .footer-acc-panel a{color: var(--accent); text-decoration:none;}
+        .footer-acc-panel a:hover{text-decoration:underline;}
+        .footer-acc-item.open .footer-acc-panel{display:block;}
+        .footer-acc-item.open .footer-acc-btn .chev{transform: rotate(90deg);}
+
+    
+        .btn {
+            border-radius: 12px;
+            padding: 14px 28px;
+            font-weight: 700;
+        }
+
+        .product-card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.16);
+        }
+
+        .add-to-cart {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        }
+
+        .catalog-controls select,
+        .filter-btn,
+        .search-box,
+        .form-group input,
+        .checkout-btn {
+            border-radius: 12px;
+        }
+
+        .product-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 3200;
+            background: rgba(2, 6, 23, 0.65);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .product-modal.active {
+            display: flex;
+        }
+
+        .product-modal-content {
+            width: min(760px, 100%);
+            max-height: 90vh;
+            overflow: auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0,0,0,.28);
+            position: relative;
+            padding: 24px;
+        }
+
+        .close-product-modal {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: #f1f5f9;
+            color: #111827;
+            font-size: 24px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .product-modal-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .product-modal-image {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 16px;
+            background: #f8fafc;
+        }
+
+        .product-modal-meta {
+            display: grid;
+            gap: 12px;
+        }
+
+        .product-modal-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: #eff6ff;
+            color: #1d4ed8;
+            font-size: 0.92rem;
+            font-weight: 600;
+            width: fit-content;
+        }
+
+        .product-modal-title {
+            font-size: 2rem;
+            line-height: 1.15;
+            margin-bottom: 0.2rem;
+            color: var(--primary);
+        }
+
+        .product-modal-description {
+            color: #475569;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .product-modal-list {
+            display: grid;
+            gap: 10px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .product-modal-list li {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: #f8fafc;
+        }
+
+        .product-modal-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-top: 8px;
+        }
+
+        .product-modal-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .product-modal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-modal-image {
+                height: 240px;
+            }
+
+            .product-modal-title {
+                font-size: 1.6rem;
+            }
+        }
+
+</style>
 </head>
 <body>
-    <!-- Header - Исправленная версия -->
+    <!-- Header -->
     <header>
         <div class="container header-content">
             <a href="#" class="logo">
@@ -994,22 +1120,22 @@
                 <ul>
                     <li><a href="#"><i class="fas fa-home"></i> <span>Главная</span></a></li>
                     <li><a href="#catalog"><i class="fas fa-list"></i> <span>Каталог</span></a></li>
-                    <li><a href="#" id="autoSelectionLink"><i class="fas fa-car"></i> <span>Подбор по авто</span></a></li>
-                    <li><a href="#" id="promotionsLink"><i class="fas fa-percentage"></i> <span>Акции</span></a></li>
-                    <li><a href="#" id="aboutLink"><i class="fas fa-info-circle"></i> <span>О нас</span></a></li>
-                    <li><a href="#" id="contactsLink"><i class="fas fa-phone"></i> <span>Контакты</span></a></li>
+                    <li><a href="#"><i class="fas fa-car"></i> <span>Подбор по авто</span></a></li>
+                    <li><a href="#"><i class="fas fa-percentage"></i> <span>Акции</span></a></li>
+                    <li><a href="#"><i class="fas fa-info-circle"></i> <span>О нас</span></a></li>
+                    <li><a href="#"><i class="fas fa-phone"></i> <span>Контакты</span></a></li>
                 </ul>
             </nav>
             
             <div class="header-actions">
                 <div class="search-box">
-                    <input type="text" placeholder="Поиск запчастей...">
-                    <button><i class="fas fa-search"></i></button>
+                    <input type="text" id="searchInput" placeholder="Поиск запчастей...">
+                    <button id="searchButton"><i class="fas fa-search"></i></button>
                 </div>
                 
                 <div class="cart-icon" id="cartIcon">
                     <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">3</span>
+                    <span class="cart-count">0</span>
                 </div>
             </div>
         </div>
@@ -1019,99 +1145,11 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Автозапчасти для любого автомобиля</h1>
-                <p>Широкий ассортимент автозапчастей с гарантией качества. Быстрая доставка по Ессентукам и удобный самовывоз.</p>
+                <h1>Запчасти для вашего автомобиля — быстро и удобно</h1>
+                <p>Parts+ помогает быстро подобрать нужные детали по бренду, категории и поиску. Удобный каталог, понятная корзина и быстрая обратная связь.</p>
                 <div class="hero-buttons">
                     <a href="#catalog" class="btn">Перейти в каталог</a>
-                    <a href="#" id="heroAutoSelection" class="btn btn-outline">Подбор по авто</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Секция подбора по авто -->
-    <section class="auto-selection" id="autoSelection">
-        <div class="container">
-            <h2 class="section-title">Подбор запчастей по автомобилю</h2>
-            <div class="selection-form">
-                <h3>Найдите запчасти для вашего авто</h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="carBrand">Марка автомобиля</label>
-                        <select id="carBrand" class="form-control">
-                            <option value="">Выберите марку</option>
-                            <option value="toyota">Toyota</option>
-                            <option value="bmw">BMW</option>
-                            <option value="volkswagen">Volkswagen</option>
-                            <option value="hyundai">Hyundai</option>
-                            <option value="lada">Lada (ВАЗ)</option>
-                            <option value="kia">Kia</option>
-                            <option value="nissan">Nissan</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
-                            <option value="ford">Ford</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="carModel">Модель</label>
-                        <input type="text" id="carModel" class="form-control" placeholder="Например: Camry, X5, Polo">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="carYear">Год выпуска</label>
-                        <select id="carYear" class="form-control">
-                            <option value="">Выберите год</option>
-                            <option value="2023">2023</option>
-                            <option value="2022">2022</option>
-                            <option value="2021">2021</option>
-                            <option value="2020">2020</option>
-                            <option value="2019">2019</option>
-                            <option value="2018">2018</option>
-                            <option value="2017">2017</option>
-                            <option value="2016">2016</option>
-                            <option value="2015">2015</option>
-                            <option value="2014">2014</option>
-                            <option value="2013">2013</option>
-                            <option value="2012">2012</option>
-                            <option value="2011">2011</option>
-                            <option value="2010">2010</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="vinNumber">VIN номер</label>
-                        <input type="text" id="vinNumber" class="form-control" placeholder="Введите VIN номер">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="category">Категория запчастей</label>
-                        <select id="category" class="form-control">
-                            <option value="">Все категории</option>
-                            <option value="engine">Двигатель</option>
-                            <option value="brakes">Тормозная система</option>
-                            <option value="suspension">Подвеска</option>
-                            <option value="electrics">Электрика</option>
-                            <option value="body">Кузовные детали</option>
-                            <option value="chemicals">Автохимия</option>
-                            <option value="tires">Шины и диски</option>
-                        </select>
-                    </div>
-                </div>
-                <div style="text-align: center; margin-top: 30px;">
-                    <button id="searchByAuto" class="btn" style="padding: 12px 40px;">
-                        <i class="fas fa-search"></i> Найти запчасти
-                    </button>
-                    <button id="resetAutoSearch" class="btn" style="background-color: var(--gray); margin-left: 15px; padding: 12px 30px;">
-                        <i class="fas fa-redo"></i> Сбросить
-                    </button>
-                </div>
-                
-                <div class="search-results" id="autoSearchResults">
-                    <h4 style="margin-top: 40px; margin-bottom: 20px;">Найденные запчасти:</h4>
-                    <div class="results-grid" id="autoResultsGrid">
-                        <!-- Результаты поиска будут здесь -->
-                    </div>
+                    <a href="#" class="btn btn-outline">Подбор по авто</a>
                 </div>
             </div>
         </div>
@@ -1120,35 +1158,35 @@
     <!-- Features -->
     <section class="features">
         <div class="container">
-            <h2 class="section-title">Почему выбирают Parts+</h2>
+            <h2 class="section-title">Почему выбирают нас</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-shipping-fast"></i>
                     </div>
                     <h3>Быстрая доставка</h3>
-                    <p>Доставка по Ессентукам в день заказа при оформлении до 14:00</p>
+                    <p>Доставка в день заказа по городу и от 1 дня по КМВ</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>Гарантия качества</h3>
-                    <p>На все запчасти предоставляется гарантия от производителя</p>
+                    <p>На все запчасти предоставляется гарантия от 6 месяцев</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-headset"></i>
                     </div>
                     <h3>Профессиональная поддержка</h3>
-                    <p>Консультации опытных специалистов при подборе запчастей</p>
+                    <p>Консультации опытных автомехаников при подборе</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-tags"></i>
                     </div>
-                    <h3>Доступные цены</h3>
-                    <p>Оптимальное соотношение цены и качества на все товары</p>
+                    <h3>Лучшие цены</h3>
+                    <p>Гарантия лучшей цены при наличии предложений у конкурентов</p>
                 </div>
             </div>
         </div>
@@ -1168,11 +1206,9 @@
                         <option value="suspension">Подвеска</option>
                         <option value="electrics">Электрика</option>
                         <option value="body">Кузовные детали</option>
-                        <option value="chemicals">Автохимия</option>
-                        <option value="tires">Шины и диски</option>
+                        <option value="transmission">Трансмиссия</option>
+                        <option value="cooling">Охлаждение</option>
                         <option value="exhaust">Выхлопная система</option>
-                        <option value="cooling">Система охлаждения</option>
-                        <option value="interior">Салон</option>
                     </select>
                     
                     <select id="brandFilter">
@@ -1182,11 +1218,9 @@
                         <option value="volkswagen">Volkswagen</option>
                         <option value="hyundai">Hyundai</option>
                         <option value="lada">Lada</option>
-                        <option value="kia">Kia</option>
-                        <option value="nissan">Nissan</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
+                        <option value="renault">Renault</option>
                         <option value="ford">Ford</option>
+                        <option value="mercedes">Mercedes-Benz</option>
                     </select>
                     
                     <button class="filter-btn" id="applyFilters">Применить</button>
@@ -1219,12 +1253,24 @@
             <!-- Cart items will be loaded here by JavaScript -->
         </div>
         
+        <div class="customer-info" id="customerInfo">
+            <h4>Контактные данные</h4>
+            <div class="form-group">
+                <label for="customerName">ФИО *</label>
+                <input type="text" id="customerName" placeholder="Иванов Иван Иванович">
+            </div>
+            <div class="form-group">
+                <label for="customerPhone">Телефон *</label>
+                <input type="tel" id="customerPhone" placeholder="+7 (999) 123-45-67">
+            </div>
+        </div>
+        
         <div class="cart-footer">
             <div class="cart-total">
                 <span>Итого:</span>
-                <span id="cartTotal">12 850 руб.</span>
+                <span id="cartTotal">0 руб.</span>
             </div>
-            <button class="checkout-btn">Оформить заказ</button>
+            <button class="checkout-btn" id="checkoutBtn">Оформить заказ</button>
         </div>
     </div>
 
@@ -1234,23 +1280,19 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Parts+</h3>
-                    <p>Магазин автозапчастей в Ессентуках. Широкий ассортимент, качественные товары, профессиональные консультации.</p>
+                    <p>Современный магазин автозапчастей с удобным каталогом, быстрым подбором и честными ценами.</p>
                     <div class="contact-info">
-                        <div class="contact-item" id="phoneContact">
+                        <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <a href="tel:+79197516926">+7 (919) 751-69-26</a>
+                            <span>8(919) 751-69-26</span>
                         </div>
-                        <div class="contact-item" id="emailContact">
+                        <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <a href="mailto:info@parts-plus.ru">info@parts-plus.ru</a>
+                            <span>info@partsplus.ru</span>
                         </div>
-                        <div class="contact-item" id="addressContact">
+                        <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Железнодорожная ул., 1, Ессентуки, павильон 38</span>
-                        </div>
-                        <div class="contact-item" id="scheduleContact">
-                            <i class="fas fa-clock"></i>
-                            <span>пн-сб с 9:00-18:00</span>
+                            <span>г. Ессентуки, ул. Железнодорожная, д. 1</span>
                         </div>
                     </div>
                 </div>
@@ -1258,118 +1300,356 @@
                 <div class="footer-column">
                     <h3>Категории</h3>
                     <ul class="footer-links">
-                        <li><a href="#" data-category="engine"><i class="fas fa-chevron-right"></i> Двигатель и компоненты</a></li>
-                        <li><a href="#" data-category="brakes"><i class="fas fa-chevron-right"></i> Тормозная система</a></li>
-                        <li><a href="#" data-category="suspension"><i class="fas fa-chevron-right"></i> Подвеска и рулевое</a></li>
-                        <li><a href="#" data-category="electrics"><i class="fas fa-chevron-right"></i> Электрика и освещение</a></li>
-                        <li><a href="#" data-category="body"><i class="fas fa-chevron-right"></i> Кузовные детали</a></li>
-                        <li><a href="#" data-category="chemicals"><i class="fas fa-chevron-right"></i> Масла и автохимия</a></li>
+                        <li><a href="#catalog" data-filter-category="engine"><i class="fas fa-chevron-right"></i> Двигатель и компоненты</a></li>
+                        <li><a href="#catalog" data-filter-category="brakes"><i class="fas fa-chevron-right"></i> Тормозная система</a></li>
+                        <li><a href="#catalog" data-filter-category="suspension"><i class="fas fa-chevron-right"></i> Подвеска и рулевое</a></li>
+                        <li><a href="#catalog" data-filter-category="electrics"><i class="fas fa-chevron-right"></i> Электрика и освещение</a></li>
+                        <li><a href="#catalog" data-filter-category="body"><i class="fas fa-chevron-right"></i> Кузовные детали</a></li>
+                        <li><a href="#catalog" data-filter-category="engine"><i class="fas fa-chevron-right"></i> Масла и автохимия</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Информация</h3>
-                    <ul class="footer-links">
-                        <li><a href="#" data-modal="about" id="footerAboutLink"><i class="fas fa-chevron-right"></i> О компании</a></li>
-                        <li><a href="#" data-modal="delivery"><i class="fas fa-chevron-right"></i> Доставка и оплата</a></li>
-                        <li><a href="#" data-modal="warranty"><i class="fas fa-chevron-right"></i> Гарантия и возврат</a></li>
-                        <li><a href="#" data-modal="contacts" id="footerContactsLink"><i class="fas fa-chevron-right"></i> Контакты</a></li>
-                        <li><a href="#" data-modal="blog"><i class="fas fa-chevron-right"></i> Блог и статьи</a></li>
-                        <li><a href="#" data-modal="privacy"><i class="fas fa-chevron-right"></i> Политика конфиденциальности</a></li>
+                    <ul class="footer-links footer-accordion">
+
+                        <li class="footer-acc-item" data-acc="about">
+                            <button class="footer-acc-btn" type="button" aria-expanded="false">
+                                <i class="fas fa-chevron-right"></i>
+                                <span>О компании</span>
+                                <i class="fas fa-chevron-right chev"></i>
+                            </button>
+                            <div class="footer-acc-panel">
+                                <p><b>Parts+</b> — магазин автозапчастей и автотоваров. Помогаем подобрать детали по VIN и параметрам авто, подсказываем аналоги и формируем заказ под ваш бюджет.</p>
+<ul>
+  <li>Подбор по VIN/марке/модели</li>
+  <li>Оригиналы и проверенные аналоги</li>
+  <li>Консультации и быстрый заказ</li>
+</ul>
+                            </div>
+                        </li>
+
+                        <li class="footer-acc-item" data-acc="delivery">
+                            <button class="footer-acc-btn" type="button" aria-expanded="false">
+                                <i class="fas fa-chevron-right"></i>
+                                <span>Доставка и оплата</span>
+                                <i class="fas fa-chevron-right chev"></i>
+                            </button>
+                            <div class="footer-acc-panel">
+                                <p><b>Доставка</b> и <b>оплата</b> подбираются под ваш заказ.</p>
+<ul>
+  <li><b>Самовывоз:</b> из магазина</li>
+  <li><b>Доставка по городу:</b> по согласованию</li>
+  <li><b>Доставка по региону:</b> по договорённости</li>
+</ul>
+<p><b>Оплата:</b> наличные/перевод, безнал для организаций — по запросу.</p>
+                            </div>
+                        </li>
+
+                        <li class="footer-acc-item" data-acc="warranty">
+                            <button class="footer-acc-btn" type="button" aria-expanded="false">
+                                <i class="fas fa-chevron-right"></i>
+                                <span>Гарантия и возврат</span>
+                                <i class="fas fa-chevron-right chev"></i>
+                            </button>
+                            <div class="footer-acc-panel">
+                                <p>На товары действует гарантия в рамках условий производителя и поставщика.</p>
+<ul>
+  <li>Возврат возможен при сохранении товарного вида и комплектности</li>
+  <li>Если возникла ошибка подбора — поможем решить вопрос</li>
+</ul>
+<p>Перед возвратом лучше связаться с нами — подскажем порядок действий.</p>
+                            </div>
+                        </li>
+
+                        <li class="footer-acc-item" data-acc="contacts">
+                            <button class="footer-acc-btn" type="button" aria-expanded="false">
+                                <i class="fas fa-chevron-right"></i>
+                                <span>Контакты</span>
+                                <i class="fas fa-chevron-right chev"></i>
+                            </button>
+                            <div class="footer-acc-panel">
+                                <p><b>Телефон:</b> <a href="tel:+79197516926">+7 (919) 751‑69‑26</a><br>
+<b>Email:</b> <a href="mailto:info@partsplus.ru">info@partsplus.ru</a><br>
+<b>Адрес:</b> г. Ессентуки, ул. Железнодорожная, д. 1</p>
+<p class="muted" style="opacity:.9">Подбор по VIN: подготовьте VIN, год выпуска и модификацию.</p>
+                            </div>
+                        </li>
+
+                        <li class="footer-acc-item" data-acc="blog">
+                            <button class="footer-acc-btn" type="button" aria-expanded="false">
+                                <i class="fas fa-chevron-right"></i>
+                                <span>Блог и статьи</span>
+                                <i class="fas fa-chevron-right chev"></i>
+                            </button>
+                            <div class="footer-acc-panel">
+                                <p>Здесь можно разместить полезные статьи для клиентов (в демо — шаблон).</p>
+<ul>
+  <li>Как подобрать запчасти по VIN</li>
+  <li>Оригинал vs аналог — когда можно экономить</li>
+  <li>Когда менять колодки/диски/масло</li>
+</ul>
+                            </div>
+                        </li>
+
+                        <li class="footer-acc-item" data-acc="privacy">
+                            <button class="footer-acc-btn" type="button" aria-expanded="false">
+                                <i class="fas fa-chevron-right"></i>
+                                <span>Политика конфиденциальности</span>
+                                <i class="fas fa-chevron-right chev"></i>
+                            </button>
+                            <div class="footer-acc-panel">
+                                <p>Мы используем ваши данные только для обработки заказа и связи с вами.</p>
+<ul>
+  <li>ФИО/телефон — для оформления и подтверждения заказа</li>
+  <li>Email — для уведомлений и подписки (по желанию)</li>
+</ul>
+<p>Можно запросить удаление данных, написав на email магазина.</p>
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Подписка на новости</h3>
                     <p>Узнавайте первыми о скидках и новинках</p>
-                    <div class="newsletter-form">
-                        <div class="newsletter-input">
-                            <input type="email" placeholder="Ваш email" id="newsletterEmail">
-                            <button id="subscribeBtn"><i class="fas fa-paper-plane"></i></button>
-                        </div>
-                        <p id="subscriptionMessage" style="margin-top: 10px; font-size: 0.9rem; display: none;"></p>
+                    <div class="search-box" style="background: #34495e; margin-top: 15px;">
+                        <input type="text" id="footerEmail" placeholder="Ваш email" style="background: #34495e; color: white;">
+                        <button id="footerSubscribeBtn" style="color: white;" title="Подписаться"><i class="fas fa-paper-plane"></i></button>
                     </div>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Parts+. Все права защищены.</p>
+                <p>&copy; <span id="copyrightYear"></span> Parts+. Все права защищены.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Модальные окна для информации -->
-    <div class="info-modal" id="infoModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modalTitle">Заголовок модального окна</h3>
-                <button class="close-modal" id="closeModal">&times;</button>
-            </div>
-            <div class="modal-body" id="modalBody">
-                <!-- Содержимое модального окна будет загружено через JavaScript -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Модальное окно для акций -->
-    <div class="info-modal" id="promotionsModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="promotionsTitle">Акции и скидки</h3>
-                <button class="close-modal" id="closePromotionsModal">&times;</button>
-            </div>
-            <div class="modal-body" id="promotionsBody">
-                <!-- Содержимое модального окна с акциями -->
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Products data - расширенный список из 25 товаров
+        // Products data with real image URLs
         const products = [
-            // Двигатель (5 товаров)
-            { id: 1, name: "Тормозные колодки Brembo", category: "brakes", brand: "toyota", year: "2015-2020", price: 3250, description: "Передние тормозные колодки для Toyota Camry 2015-2020", image: "brake-pad" },
-            { id: 2, name: "Масляный фильтр Mann", category: "engine", brand: "volkswagen", year: "2010-2018", price: 850, description: "Масляный фильтр для Volkswagen Polo 2010-2018", image: "filter" },
-            { id: 6, name: "Сцепление Luk", category: "engine", brand: "volkswagen", year: "2012-2018", price: 12500, description: "Комплект сцепления для Volkswagen Tiguan 2012-2018", image: "clutch" },
-            { id: 9, name: "Ремень ГРМ Gates", category: "engine", brand: "hyundai", year: "2011-2017", price: 4200, description: "Ремень ГРМ с роликами для Hyundai Solaris", image: "timing-belt" },
-            { id: 10, name: "Свечи зажигания NGK", category: "engine", brand: "bmw", year: "2005-2012", price: 1800, description: "Иридиевые свечи зажигания для BMW 3 серии", image: "spark-plugs" },
-            
-            // Подвеска (5 товаров)
-            { id: 3, name: "Амортизатор KYB", category: "suspension", brand: "hyundai", year: "2011-2017", price: 4200, description: "Передний амортизатор для Hyundai Solaris 2011-2017", image: "shock-absorber" },
-            { id: 7, name: "Сайлентблок Lemforder", category: "suspension", brand: "bmw", year: "2005-2012", price: 1850, description: "Сайлентблок переднего рычага BMW 3 серии 2005-2012", image: "bushing" },
-            { id: 11, name: "Шаровая опора TRW", category: "suspension", brand: "lada", year: "2015-2022", price: 1200, description: "Шаровая опора для Lada Vesta/Granta", image: "ball-joint" },
-            { id: 12, name: "Стойка стабилизатора Lemforder", category: "suspension", brand: "audi", year: "2008-2015", price: 2100, description: "Стойка стабилизатора для Audi A4", image: "stabilizer-link" },
-            { id: 13, name: "Рулевая тяга Meyle", category: "suspension", brand: "mercedes", year: "2007-2014", price: 3800, description: "Рулевая тяга для Mercedes C-class", image: "tie-rod" },
-            
-            // Электрика (5 товаров)
-            { id: 4, name: "Аккумулятор VARTA", category: "electrics", brand: "bmw", year: "2010-2015", price: 8900, description: "Аккумулятор 70Ah для BMW X5 2010-2015", image: "battery" },
-            { id: 5, name: "Фара головного света", category: "electrics", brand: "lada", year: "2015-2022", price: 5200, description: "Левая фара головного света для Lada Vesta 2015-2022", image: "headlight" },
-            { id: 14, name: "Генератор Bosch", category: "electrics", brand: "ford", year: "2011-2018", price: 14500, description: "Генератор для Ford Focus 3", image: "generator" },
-            { id: 15, name: "Стартер Valeo", category: "electrics", brand: "nissan", year: "2007-2013", price: 9800, description: "Стартер для Nissan Qashqai", image: "starter" },
-            { id: 16, name: "Датчик ABS", category: "electrics", brand: "kia", year: "2011-2017", price: 3200, description: "Датчик ABS для Kia Rio", image: "abs-sensor" },
-            
-            // Кузовные детали (4 товара)
-            { id: 8, name: "Капот оригинал", category: "body", brand: "toyota", year: "2013-2019", price: 23400, description: "Капот для Toyota RAV4 2013-2019 в цвет кузова", image: "hood" },
-            { id: 17, name: "Бампер передний", category: "body", brand: "volkswagen", year: "2010-2018", price: 15800, description: "Передний бампер для Volkswagen Polo Sedan", image: "bumper" },
-            { id: 18, name: "Крыло переднее", category: "body", brand: "hyundai", year: "2016-2020", price: 11200, description: "Переднее крыло для Hyundai Creta", image: "fender" },
-            { id: 19, name: "Зеркало боковое", category: "body", brand: "bmw", year: "2010-2017", price: 6700, description: "Левое боковое зеркало для BMW 5 серии", image: "mirror" },
-            
-            // Автохимия (3 товара)
-            { id: 20, name: "Моторное масло 5W-30 Mobil", category: "chemicals", brand: "all", year: "all", price: 3200, description: "Синтетическое моторное масло 5W-30, 4л", image: "engine-oil" },
-            { id: 21, name: "Тормозная жидкость DOT-4", category: "chemicals", brand: "all", year: "all", price: 850, description: "Тормозная жидкость DOT-4, 1л", image: "brake-fluid" },
-            { id: 22, name: "Антифриз Felix", category: "chemicals", brand: "all", year: "all", price: 1200, description: "Антифриз красный, концентрат, 5л", image: "antifreeze" },
-            
-            // Шины и диски (3 товара)
-            { id: 23, name: "Шина летняя Bridgestone", category: "tires", brand: "all", year: "all", price: 6500, description: "Летняя шина 205/55 R16 91V", image: "tire" },
-            { id: 24, name: "Диски литые 16\"", category: "tires", brand: "all", year: "all", price: 18500, description: "Литые диски 16 дюймов, 5x114.3", image: "wheel" },
-            { id: 25, name: "Шина зимняя Nokian", category: "tires", brand: "all", year: "all", price: 7200, description: "Зимняя шина с шипами 195/65 R15", image: "winter-tire" }
+            { 
+                id: 1, 
+                name: "Тормозные колодки Brembo", 
+                category: "brakes", 
+                brand: "toyota", 
+                price: 3250, 
+                description: "Передние тормозные колодки для Toyota Camry 2015-2020",
+                image: "assets/images/kolodki1.jpg"
+            },
+            { 
+                id: 2, 
+                name: "Масляный фильтр Mann", 
+                category: "engine", 
+                brand: "volkswagen", 
+                price: 850, 
+                description: "Масляный фильтр для Volkswagen Polo 2010-2018",
+                image: "assets/images/filtr1.jpg"
+            },
+            { 
+                id: 3, 
+                name: "Амортизатор KYB", 
+                category: "suspension", 
+                brand: "hyundai", 
+                price: 4200, 
+                description: "Передний амортизатор для Hyundai Solaris 2011-2017",
+                image: "assets/images/amort1.jpeg"
+            },
+            { 
+                id: 4, 
+                name: "Аккумулятор VARTA", 
+                category: "electrics", 
+                brand: "bmw", 
+                price: 8900, 
+                description: "Аккумулятор 70Ah для BMW X5 2010-2015",
+                image: "assets/images/akk1.jpg"
+            },
+            { 
+                id: 5, 
+                name: "Фара головного света", 
+                category: "electrics", 
+                brand: "lada", 
+                price: 5200, 
+                description: "Левая фара головного света для Lada Vesta 2015-2022",
+                image: "assets/images/fara1.png"
+            },
+            { 
+                id: 6, 
+                name: "Сцепление Luk", 
+                category: "engine", 
+                brand: "volkswagen", 
+                price: 12500, 
+                description: "Комплект сцепления для Volkswagen Tiguan 2012-2018",
+                image: "assets/images/schep1.jpg"
+            },
+            { 
+                id: 7, 
+                name: "Сайлентблок Lemforder", 
+                category: "suspension", 
+                brand: "bmw", 
+                price: 1850, 
+                description: "Сайлентблок переднего рычага BMW 3 серии 2005-2012",
+                image: "assets/images/blok1.png"
+            },
+            { 
+                id: 8, 
+                name: "Капот оригинал", 
+                category: "body", 
+                brand: "toyota", 
+                price: 23400, 
+                description: "Капот для Toyota RAV4 2013-2019 в цвет кузова",
+                image: "assets/images/kapot1.jpeg"
+            },
+            { 
+                id: 9, 
+                name: "Ремень ГРМ Gates", 
+                category: "engine", 
+                brand: "ford", 
+                price: 2450, 
+                description: "Ремень ГРМ с роликами для Ford Focus 2 2008-2011",
+                image: "assets/images/remen.jpg"
+            },
+            { 
+                id: 10, 
+                name: "Тормозные диски ATE", 
+                category: "brakes", 
+                brand: "mercedes", 
+                price: 5800, 
+                description: "Передние тормозные диски для Mercedes C-Class W204",
+                image: "assets/images/tormoz1.jpg"
+            },
+            { 
+                id: 11, 
+                name: "Стартер Bosch", 
+                category: "electrics", 
+                brand: "renault", 
+                price: 7500, 
+                description: "Стартер для Renault Logan 2008-2014",
+                image: "assets/images/start1.jpg"
+            },
+            { 
+                id: 12, 
+                name: "Генератор Denso", 
+                category: "electrics", 
+                brand: "toyota", 
+                price: 11200, 
+                description: "Генератор для Toyota Corolla 2010-2016",
+                image: "assets/images/gen1.jpg"
+            },
+            { 
+                id: 13, 
+                name: "Радиатор Nissens", 
+                category: "cooling", 
+                brand: "volkswagen", 
+                price: 6800, 
+                description: "Радиатор охлаждения для Volkswagen Passat B6",
+                image: "assets/images/radia1.jpg"
+            },
+            { 
+                id: 14, 
+                name: "Глушитель Walker", 
+                category: "exhaust", 
+                brand: "bmw", 
+                price: 9500, 
+                description: "Задний глушитель для BMW X3 E83",
+                image: "assets/images/glushit1.png"
+            },
+            { 
+                id: 15, 
+                name: "Шаровая опора TRW", 
+                category: "suspension", 
+                brand: "hyundai", 
+                price: 1350, 
+                description: "Шаровая опора для Hyundai Tucson 2015-2020",
+                image: "assets/images/sharovaya1.jpg"
+            },
+            { 
+                id: 16, 
+                name: "Масло моторное Mobil 1", 
+                category: "engine", 
+                brand: "all", 
+                price: 4200, 
+                description: "Моторное масло 5W-30 4л",
+                image: "assets/images/maslo1.jpg"
+            },
+            { 
+                id: 17, 
+                name: "Фильтр салонный Bosch", 
+                category: "engine", 
+                brand: "all", 
+                price: 650, 
+                description: "Салонный фильтр угольный",
+                image: "assets/images/filtrsal1.jpg"
+            },
+            { 
+                id: 18, 
+                name: "Колодки ручника", 
+                category: "brakes", 
+                brand: "lada", 
+                price: 1800, 
+                description: "Тормозные колодки стояночного тормоза Lada Vesta",
+                image: "assets/images/12.png"
+            },
+            { 
+                id: 19, 
+                name: "Помпа Hepu", 
+                category: "cooling", 
+                brand: "bmw", 
+                price: 3900, 
+                description: "Водяной насос для BMW 5 серии E60",
+                image: "assets/images/pompa.png"
+            },
+            { 
+                id: 20, 
+                name: "Пружины подвески Eibach", 
+                category: "suspension", 
+                brand: "mercedes", 
+                price: 14500, 
+                description: "Занижающие пружины для Mercedes E-Class",
+                image: "assets/images/pruzini.jpg"
+            },
+            { 
+                id: 21, 
+                name: "Кулиса КПП", 
+                category: "transmission", 
+                brand: "lada", 
+                price: 3200, 
+                description: "Кулиса переключения передач Lada Granta",
+                image: "assets/images/kulisa.jpg"
+            },
+            { 
+                id: 22, 
+                name: "Диск сцепления Valeo", 
+                category: "transmission", 
+                brand: "renault", 
+                price: 5800, 
+                description: "Диск сцепления для Renault Duster",
+                image: "assets/images/schepa1.jpg"
+            },
+            { 
+                id: 23, 
+                name: "Датчик ABS Bosch", 
+                category: "electrics", 
+                brand: "toyota", 
+                price: 1950, 
+                description: "Датчик ABS передний Toyota RAV4",
+                image: "assets/images/datchik.jpg"
+            },
+            { 
+                id: 24, 
+                name: "Крыло переднее", 
+                category: "body", 
+                brand: "ford", 
+                price: 8500, 
+                description: "Крыло переднее левое Ford Focus 3",
+                image: "assets/images/krulo.jpg"
+            }
         ];
+
 
         // Cart data
-        let cart = [
-            { id: 1, name: "Тормозные колодки Brembo", price: 3250, quantity: 2 },
-            { id: 3, name: "Амортизатор KYB", price: 4200, quantity: 1 }
-        ];
+        let cart = [];
 
         // DOM elements
         const cartIcon = document.getElementById('cartIcon');
@@ -1383,211 +1663,64 @@
         const sortBy = document.getElementById('sortBy');
         const applyFilters = document.getElementById('applyFilters');
         const cartCount = document.querySelector('.cart-count');
-        
-        // Новые элементы для подбора по авто
-        const autoSelectionLink = document.getElementById('autoSelectionLink');
-        const heroAutoSelection = document.getElementById('heroAutoSelection');
-        const promotionsLink = document.getElementById('promotionsLink');
-        const aboutLink = document.getElementById('aboutLink');
-        const contactsLink = document.getElementById('contactsLink');
-        const searchByAuto = document.getElementById('searchByAuto');
-        const resetAutoSearch = document.getElementById('resetAutoSearch');
-        const autoSearchResults = document.getElementById('autoSearchResults');
-        const autoResultsGrid = document.getElementById('autoResultsGrid');
-        
-        // Footer elements
-        const infoModal = document.getElementById('infoModal');
-        const closeModal = document.getElementById('closeModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalBody = document.getElementById('modalBody');
-        const subscribeBtn = document.getElementById('subscribeBtn');
-        const newsletterEmail = document.getElementById('newsletterEmail');
-        const subscriptionMessage = document.getElementById('subscriptionMessage');
-        const footerAboutLink = document.getElementById('footerAboutLink');
-        const footerContactsLink = document.getElementById('footerContactsLink');
-        
-        // Модальное окно акций
-        const promotionsModal = document.getElementById('promotionsModal');
-        const closePromotionsModal = document.getElementById('closePromotionsModal');
-        const promotionsTitle = document.getElementById('promotionsTitle');
-        const promotionsBody = document.getElementById('promotionsBody');
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const customerName = document.getElementById('customerName');
+        const customerPhone = document.getElementById('customerPhone');
 
-        // Глобальные функции, которые вызываются в других местах
-        function showNotification(message, type = 'success') {
-            // Удаляем существующие уведомления
-            const existingNotifications = document.querySelectorAll('.custom-notification');
-            existingNotifications.forEach(notification => notification.remove());
-            
-            const notification = document.createElement('div');
-            notification.className = 'custom-notification';
-            notification.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                background-color: ${type === 'success' ? 'var(--success)' : 'var(--secondary)'};
-                color: white;
-                padding: 15px 20px;
-                border-radius: var(--border-radius);
-                box-shadow: var(--shadow);
-                z-index: 10000;
-                animation: slideIn 0.3s ease-out;
-                display: flex;
-                align-items: center;
-                max-width: 400px;
-                font-weight: 500;
-            `;
-            
-            const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
-            notification.innerHTML = `
-                <i class="fas ${icon}" style="margin-right: 10px; font-size: 1.2rem;"></i>
-                <span>${message}</span>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease-out';
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        document.body.removeChild(notification);
-                    }
-                }, 300);
-            }, 3000);
+        function getProductModal() {
+            return document.getElementById('productModal');
         }
 
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            
-            if (!product) {
-                showNotification('Товар не найден', 'error');
-                return;
-            }
-            
-            // Check if product is already in cart
-            const existingItem = cart.find(item => item.id === productId);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    quantity: 1
-                });
-            }
-            
-            updateCart();
-            renderCartItems();
-            
-            // Show notification
-            showNotification(`Товар "${product.name}" добавлен в корзину`);
+        function getModalBody() {
+            return document.getElementById('modalBody');
         }
 
-        function removeFromCart(productId) {
-            const item = cart.find(item => item.id === productId);
-            if (item) {
-                cart = cart.filter(item => item.id !== productId);
-                updateCart();
-                renderCartItems();
-                showNotification(`Товар "${item.name}" удален из корзины`);
-            }
-        }
-
-        function updateQuantity(productId, newQuantity) {
-            if (newQuantity < 1) {
-                removeFromCart(productId);
-                return;
-            }
-            
-            const item = cart.find(item => item.id === productId);
-            if (item) {
-                item.quantity = newQuantity;
-            }
-            
-            updateCart();
-            renderCartItems();
-        }
-
-        // Добавляем CSS для анимаций уведомлений
-        if (!document.querySelector('#notification-styles')) {
-            const style = document.createElement('style');
-            style.id = 'notification-styles';
-            style.textContent = `
-                @keyframes slideIn {
-                    from { transform: translateX(100%); opacity: 0; }
-                    to { transform: translateX(0); opacity: 1; }
-                }
-                @keyframes slideOut {
-                    from { transform: translateX(0); opacity: 1; }
-                    to { transform: translateX(100%); opacity: 0; }
-                }
-            `;
-            document.head.appendChild(style);
+        function closeProductModalFn() {
+            const productModal = getProductModal();
+            if (!productModal) return;
+            productModal.classList.remove('active');
+            document.body.style.overflow = '';
         }
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
             renderProducts(products);
             updateCart();
-            renderPromotionsModal();
             
             // Event listeners
             cartIcon.addEventListener('click', openCart);
             closeCart.addEventListener('click', closeCartModal);
             applyFilters.addEventListener('click', filterProducts);
             sortBy.addEventListener('change', filterProducts);
-            
-            // Подбор по авто
-            autoSelectionLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('autoSelection').scrollIntoView({
-                    behavior: 'smooth'
-                });
+            searchButton.addEventListener('click', searchProducts);
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchProducts();
+                }
             });
-            
-            heroAutoSelection.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('autoSelection').scrollIntoView({
-                    behavior: 'smooth'
-                });
+
+            const closeProductModal = document.getElementById('closeProductModal');
+            const productModal = document.getElementById('productModal');
+
+            closeProductModal?.addEventListener('click', closeProductModalFn);
+            productModal?.addEventListener('click', function(e) {
+                if (e.target === productModal) {
+                    closeProductModalFn();
+                }
             });
-            
-            // Акции
-            promotionsLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                openPromotionsModal();
+
+            document.addEventListener('keydown', function(e) {
+                const modal = document.getElementById('productModal');
+                if (e.key === 'Escape' && modal?.classList.contains('active')) {
+                    closeProductModalFn();
+                }
             });
-            
-            // О нас
-            aboutLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                openInfoModal('about');
-            });
-            
-            // Контакты
-            contactsLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                openInfoModal('contacts');
-            });
-            
-            // Поиск по авто
-            searchByAuto.addEventListener('click', performAutoSearch);
-            resetAutoSearch.addEventListener('click', resetAutoSearchForm);
-            
-            // Модальные окна
-            closePromotionsModal.addEventListener('click', closePromotionsModalFunc);
             
             // Close cart when clicking outside
             window.addEventListener('click', function(event) {
                 if (event.target === cartModal) {
                     closeCartModal();
-                }
-                if (event.target === infoModal) {
-                    closeInfoModal();
-                }
-                if (event.target === promotionsModal) {
-                    closePromotionsModalFunc();
                 }
             });
             
@@ -1605,541 +1738,45 @@
                     }
                 });
             });
-            
-            // Инициализация функционала футера
-            initFooterFunctionality();
         });
 
-        // Функция поиска по авто
-        function performAutoSearch() {
-            const brand = document.getElementById('carBrand').value;
-            const model = document.getElementById('carModel').value.trim().toLowerCase();
-            const year = document.getElementById('carYear').value;
-            const vin = document.getElementById('vinNumber').value.trim().toLowerCase();
-            const category = document.getElementById('category').value;
+        // Search products
+        function searchProducts() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
             
-            // Фильтрация товаров
-            let filteredProducts = products.filter(product => {
-                // Фильтр по марке
-                if (brand && product.brand !== brand && product.brand !== 'all') {
-                    return false;
-                }
-                
-                // Фильтр по модели (поиск в названии)
-                if (model && !product.name.toLowerCase().includes(model) && !product.description.toLowerCase().includes(model)) {
-                    return false;
-                }
-                
-                // Фильтр по году (проверяем диапазон годов)
-                if (year && product.year !== 'all') {
-                    const yearRange = product.year.split('-');
-                    const minYear = parseInt(yearRange[0]);
-                    const maxYear = yearRange[1] ? parseInt(yearRange[1]) : minYear;
-                    const selectedYear = parseInt(year);
-                    
-                    if (selectedYear < minYear || selectedYear > maxYear) {
-                        return false;
-                    }
-                }
-                
-                // Фильтр по категории
-                if (category && product.category !== category) {
-                    return false;
-                }
-                
-                // Если указан VIN, показываем все подходящие товары
-                if (vin && vin.length > 0) {
-                    // В реальном приложении здесь была бы проверка по базе данных
-                    // Для демо просто показываем все товары, соответствующие другим фильтрам
-                    return true;
-                }
-                
-                return true;
-            });
-            
-            // Отображение результатов
-            renderAutoSearchResults(filteredProducts);
-            
-            // Показать уведомление
-            if (filteredProducts.length > 0) {
-                showNotification(`Найдено ${filteredProducts.length} запчастей для вашего авто`);
-            } else {
-                showNotification('По вашему запросу ничего не найдено. Попробуйте изменить параметры поиска.', 'error');
-            }
-        }
-        
-        // Функция сброса формы подбора по авто
-        function resetAutoSearchForm() {
-            document.getElementById('carBrand').value = '';
-            document.getElementById('carModel').value = '';
-            document.getElementById('carYear').value = '';
-            document.getElementById('vinNumber').value = '';
-            document.getElementById('category').value = '';
-            autoSearchResults.style.display = 'none';
-            autoResultsGrid.innerHTML = '';
-        }
-        
-        // Функция отображения результатов поиска по авто
-        function renderAutoSearchResults(productsToRender) {
-            autoResultsGrid.innerHTML = '';
-            
-            if (productsToRender.length === 0) {
-                autoResultsGrid.innerHTML = '<p style="text-align: center; padding: 20px; color: #666; grid-column: 1/-1;">Товары не найдены. Попробуйте изменить параметры поиска.</p>';
-                autoSearchResults.style.display = 'block';
+            if (searchTerm === '') {
+                renderProducts(products);
                 return;
             }
             
-            productsToRender.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card';
-                
-                productCard.innerHTML = `
-                    <div class="product-img">
-                        <i class="fas fa-${getProductIcon(product.category)}"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">${product.name}</h3>
-                        <p class="product-description">${product.description}</p>
-                        <div class="product-price">${formatPrice(product.price)} руб.</div>
-                        <div class="product-actions">
-                            <button class="add-to-cart" data-id="${product.id}">
-                                <i class="fas fa-cart-plus"></i> В корзину
-                            </button>
-                            <button class="view-details" data-id="${product.id}">
-                                <i class="fas fa-info-circle"></i> Подробнее
-                            </button>
-                        </div>
-                    </div>
-                `;
-                
-                autoResultsGrid.appendChild(productCard);
-            });
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(searchTerm) ||
+                product.description.toLowerCase().includes(searchTerm) ||
+                product.category.toLowerCase().includes(searchTerm)
+            );
             
-            // Add event listeners to "Add to cart" buttons
-            autoResultsGrid.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', function() {
-                    const productId = parseInt(this.getAttribute('data-id'));
-                    addToCart(productId);
-                });
-            });
+            renderProducts(filteredProducts);
             
-            // Add event listeners to "View details" buttons
-            autoResultsGrid.querySelectorAll('.view-details').forEach(button => {
-                button.addEventListener('click', function() {
-                    const productId = parseInt(this.getAttribute('data-id'));
-                    const product = products.find(p => p.id === productId);
-                    showProductDetails(product);
-                });
-            });
-            
-            autoSearchResults.style.display = 'block';
-        }
-        
-        // Функция открытия модального окна с акциями
-        function openPromotionsModal() {
-            promotionsModal.classList.add('active');
-        }
-        
-        // Функция закрытия модального окна с акциями
-        function closePromotionsModalFunc() {
-            promotionsModal.classList.remove('active');
-        }
-        
-        // Функция рендеринга содержимого модального окна с акциями
-        function renderPromotionsModal() {
-            promotionsBody.innerHTML = `
-                <h4>Текущие акции и специальные предложения</h4>
-                
-                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-                    <h5 style="color: #e74c3c; margin-top: 0;">Скидка 15% на все тормозные колодки</h5>
-                    <p>Только до конца месяца! Качественные тормозные колодки от ведущих производителей со скидкой 15%.</p>
-                    <p><strong>Срок действия:</strong> до 10 января 2026 г.</p>
-                </div>
-                
-                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-                    <h5 style="color: #3498db; margin-top: 0;">Бесплатная доставка при заказе от 3000 руб.</h5>
-                    <p>Заказывайте запчасти на сумму от 3000 рублей и получайте бесплатную доставку по Ессентукам!</p>
-                    <p><strong>Срок действия:</strong> постоянно</p>
-                </div>
-                
-                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-                    <h5 style="color: #27ae60; margin-top: 0;">Комплект масла и фильтра со скидкой 10%</h5>
-                    <p>Покупайте моторное масло вместе с масляным фильтром и получайте скидку 10% на весь комплект.</p>
-                    <p><strong>Срок действия:</strong> до 31 декабря 2025 г.</p>
-                </div>
-                
-                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-                    <h5 style="color: #9b59b6; margin-top: 0;">Зимние шины со скидкой 20%</h5>
-                    <p>Готовьтесь к зиме заранее! Зимние шины ведущих брендов со скидкой 20% при покупке комплекта из 4 шин.</p>
-                    <p><strong>Срок действия:</strong> до 31 декабря 2025 г.</p>
-                </div>
-                
-                <div style="margin-top: 30px; padding: 15px; background: #e8f4fc; border-radius: 8px;">
-                    <h5>Как получить скидку?</h5>
-                    <ol>
-                        <li>Добавьте товары в корзину</li>
-                        <li>При оформлении заказа введите промокод <strong>AUTO2023</strong></li>
-                        <li>Скидка будет применена автоматически</li>
-                    </ol>
-                    <p><em>Акции не суммируются. Применяется наибольшая скидка.</em></p>
-                </div>
-                
-                <div style="margin-top: 30px; text-align: center;">
-                    <button class="btn" onclick="document.getElementById('catalog').scrollIntoView({behavior: 'smooth'}); closePromotionsModalFunc();" style="padding: 12px 30px;">
-                        <i class="fas fa-shopping-cart"></i> Перейти к покупкам
-                    </button>
-                </div>
-            `;
+            if (filteredProducts.length === 0) {
+                showNotification('По вашему запросу ничего не найдено');
+            }
         }
 
-        // Инициализация функционала футера
-        function initFooterFunctionality() {
-            // Категории - фильтрация каталога
-            document.querySelectorAll('[data-category]').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const category = this.getAttribute('data-category');
-                    filterByCategory(category);
-                    // Прокрутка к каталогу
-                    document.querySelector('#catalog').scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-            
-            // Информационные ссылки - открытие модальных окон
-            document.querySelectorAll('[data-modal]').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const modalType = this.getAttribute('data-modal');
-                    openInfoModal(modalType);
-                });
-            });
-            
-            // Ссылки "О нас" и "Контакты" в футере
-            footerAboutLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                openInfoModal('about');
-            });
-            
-            footerContactsLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                openInfoModal('contacts');
-            });
-            
-            // Контактная информация
-            const phoneContact = document.getElementById('phoneContact');
-            const emailContact = document.getElementById('emailContact');
-            const addressContact = document.getElementById('addressContact');
-            const scheduleContact = document.getElementById('scheduleContact');
-            
-            if (phoneContact) {
-                phoneContact.addEventListener('click', function() {
-                    showNotification('Нажмите на номер телефона, чтобы позвонить');
-                });
-            }
-            
-            if (emailContact) {
-                emailContact.addEventListener('click', function() {
-                    showNotification('Нажмите на email, чтобы написать нам');
-                });
-            }
-            
-            if (addressContact) {
-                addressContact.addEventListener('click', function() {
-                    openInfoModal('contacts');
-                });
-            }
-            
-            if (scheduleContact) {
-                scheduleContact.addEventListener('click', function() {
-                    showNotification('Мы работаем: пн-сб с 9:00 до 18:00');
-                });
-            }
-            
-            // Подписка на новости
-            if (subscribeBtn) {
-                subscribeBtn.addEventListener('click', subscribeToNewsletter);
-            }
-            
-            if (newsletterEmail) {
-                newsletterEmail.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        subscribeToNewsletter();
-                    }
-                });
-            }
-            
-            // Закрытие модального окна
-            if (closeModal) {
-                closeModal.addEventListener('click', closeInfoModal);
-            }
-        }
-        
-        // Фильтрация по категории из футера
-        function filterByCategory(category) {
-            categoryFilter.value = category;
-            filterProducts();
-            
-            // Показать уведомление
-            const categoryNames = {
-                'engine': 'Двигатель и компоненты',
-                'brakes': 'Тормозная система',
-                'suspension': 'Подвеска и рулевое',
-                'electrics': 'Электрика и освещение',
-                'body': 'Кузовные детали',
-                'chemicals': 'Масла и автохимия',
-                'tires': 'Шины и диски',
-                'exhaust': 'Выхлопная система',
-                'cooling': 'Система охлаждения',
-                'interior': 'Салон'
-            };
-            
-            showNotification(`Показаны товары категории: ${categoryNames[category] || category}`);
-        }
-        
-        // Открытие информационного модального окна
-        function openInfoModal(modalType) {
-            const modalData = getModalContent(modalType);
-            modalTitle.textContent = modalData.title;
-            modalBody.innerHTML = modalData.content;
-            infoModal.classList.add('active');
-        }
-        
-        // Закрытие информационного модального окна
-        function closeInfoModal() {
-            infoModal.classList.remove('active');
-        }
-        
-        // Получение содержимого для модальных окон
-        function getModalContent(modalType) {
-            const content = {
-                'about': {
-                    title: 'О компании Parts+',
-                    content: `
-                        <p><strong>Parts+</strong> - магазин автозапчастей в Ессентуках, работающий на рынке автомобильных запчастей.</p>
-                        <h4>Наша миссия</h4>
-                        <p>Предоставлять нашим клиентам качественные автозапчасти по доступным ценам с быстрой доставкой и профессиональной поддержкой.</p>
-                        <h4>Наши преимущества</h4>
-                        <ul>
-                            <li>Широкий ассортимент автозапчастей</li>
-                            <li>Прямые поставки от производителей</li>
-                            <li>Гарантия качества на все товары</li>
-                            <li>Быстрая доставка по Ессентукам</li>
-                            <li>Профессиональные консультации</li>
-                            <li>Удобное расположение на Железнодорожной улице</li>
-                        </ul>
-                        <h4>Наша команда</h4>
-                        <p>В нашей команде работают опытные специалисты, готовые помочь вам с подбором запчастей для вашего автомобиля.</p>
-                    `
-                },
-                'delivery': {
-                    title: 'Доставка и оплата',
-                    content: `
-                        <h4>Способы доставки</h4>
-                        <ul>
-                            <li><strong>Самовывоз</strong> - Железнодорожная ул., 1, Ессентуки, павильон 38</li>
-                            <li><strong>Доставка по Ессентукам</strong> - в день заказа при оформлении до 14:00</li>
-                            <li><strong>Доставка по КМВ</strong> - в течение 1-2 дней</li>
-                        </ul>
-                        <h4>Стоимость доставки</h4>
-                        <ul>
-                            <li>Самовывоз - бесплатно</li>
-                            <li>По Ессентукам - 200 руб. (бесплатно при заказе от 3000 руб.)</li>
-                            <li>По КМВ - рассчитывается индивидуально</li>
-                        </ul>
-                        <h4>Способы оплаты</h4>
-                        <ul>
-                            <li>Наличными при получении</li>
-                            <li>Банковской картой (Visa, MasterCard, МИР) в магазине</li>
-                            <li>Перевод на карту</li>
-                        </ul>
-                    `
-                },
-                'warranty': {
-                    title: 'Гарантия и возврат',
-                    content: `
-                        <h4>Гарантийные обязательства</h4>
-                        <p>Мы предоставляем гарантию на все товары, приобретенные в нашем магазине:</p>
-                        <ul>
-                            <li>На новые запчасти - гарантия производителя</li>
-                            <li>На оригинальные запчасти - 1 год</li>
-                            <li>На автохимию и масла - 6 месяцев</li>
-                        </ul>
-                        <h4>Условия гарантии</h4>
-                        <p>Гарантия действует при соблюдении следующих условий:</p>
-                        <ul>
-                            <li>Сохранение товарного вида и упаковки</li>
-                            <li>Наличие чека или другого документа, подтверждающего покупку</li>
-                            <li>Отсутствие механических повреждений, вызванных неправильной эксплуатацией</li>
-                            <li>Установка запчастей квалифицированными специалистами</li>
-                        </ul>
-                        <h4>Возврат товара</h4>
-                        <p>Вы можете вернуть товар в течение 14 дней с момента покупки при условии:</p>
-                        <ul>
-                            <li>Сохранности товарного вида и упаковки</li>
-                            <li>Отсутствия следов эксплуатации</li>
-                            <li>Наличия чека или другого подтверждения покупки</li>
-                        </ul>
-                    `
-                },
-                'contacts': {
-                    title: 'Контакты',
-                    content: `
-                        <h4>Контактная информация</h4>
-                        <p><strong>Телефон:</strong> <a href="tel:+79197516926">+7 (919) 751-69-26</a></p>
-                        <p><strong>Email:</strong> <a href="mailto:info@parts-plus.ru">info@parts-plus.ru</a></p>
-                        <p><strong>Адрес:</strong> Железнодорожная ул., 1, Ессентуки, павильон 38</p>
-                        
-                        <h4>Режим работы</h4>
-                        <ul>
-                            <li>Понедельник - Суббота: 9:00 - 18:00</li>
-                            <li>Воскресенье: выходной</li>
-                        </ul>
-                        
-                        <h4>Как нас найти</h4>
-                        <p>Наш магазин расположен на Железнодорожной улице, в павильоне №38. Удобный подъезд, парковка для клиентов.</p>
-                        
-                        <h4>Социальные сети</h4>
-                        <p>Следите за нашими новостями и акциями в социальных сетях:</p>
-                        <ul>
-                            <li>Instagram: @parts_plus_essentuki</li>
-                            <li>VK: vk.com/partsplus</li>
-                        </ul>
-                    `
-                },
-                'blog': {
-                    title: 'Полезные статьи',
-                    content: `
-                        <h4>Советы по выбору и эксплуатации автозапчастей</h4>
-                        <p>В нашем блоге мы публикуем полезные материалы об обслуживании и ремонте автомобилей:</p>
-                        
-                        <h5>Популярные статьи</h5>
-                        <ul>
-                            <li><strong>Как выбрать тормозные колодки:</strong> Советы по подбору тормозных колодок для разных автомобилей</li>
-                            <li><strong>Замена масла в двигателе:</strong> Пошаговая инструкция и рекомендации по выбору масла</li>
-                            <li><strong>Диагностика подвески:</strong> Как определить неисправности подвески самостоятельно</li>
-                            <li><strong>Аккумулятор зимой:</strong> Советы по эксплуатации и выбору аккумулятора в холодное время года</li>
-                            <li><strong>Замена ремня ГРМ:</strong> Почему важно своевременно менять ремень ГРМ и как это сделать</li>
-                        </ul>
-                        
-                        <h5>Новости компании</h5>
-                        <ul>
-                            <li>Новые поступления запчастей для отечественных автомобилей</li>
-                            <li>Скидки на масла и автохимию</li>
-                            <li>Расширение ассортимента запчастей для иномарок</li>
-                        </ul>
-                        
-                        <p>Подпишитесь на нашу рассылку, чтобы быть в курсе новых статей и акций!</p>
-                    `
-                },
-                'privacy': {
-                    title: 'Политика конфиденциальности',
-                    content: `
-                        <h4>1. Общие положения</h4>
-                        <p>Настоящая политика конфиденциальности определяет порядок обработки и защиты информации о пользователях сайта Parts+.</p>
-                        
-                        <h4>2. Собираемая информация</h4>
-                        <p>Мы можем собирать следующую информацию:</p>
-                        <ul>
-                            <li>ФИО, контактные данные (телефон, email)</li>
-                            <li>Информация о заказах и предпочтениях</li>
-                            <li>Техническая информация (IP-адрес, тип браузера, время посещения)</li>
-                            <li>Данные для доставки товаров</li>
-                        </ul>
-                        
-                        <h4>3. Использование информации</h4>
-                        <p>Собранная информация используется для:</p>
-                        <ul>
-                            <li>Обработки заказов и доставки товаров</li>
-                            <li>Предоставления информации о товарах и акциях</li>
-                            <li>Улучшения качества обслуживания</li>
-                            <li>Обратной связи с клиентами</li>
-                        </ul>
-                        
-                        <h4>4. Защита информации</h4>
-                        <p>Мы принимаем необходимые меры для защиты персональных данных пользователей от несанкционированного доступа, изменения, раскрытия или уничтожения.</p>
-                        
-                        <h4>5. Передача информации третьим лицам</h4>
-                        <p>Мы не передаем персональные данные третьим лицам, за исключением:</p>
-                        <ul>
-                            <li>Случаев, предусмотренных законодательством РФ</li>
-                            <li>Для организации доставки товаров</li>
-                            <li>С согласия самого пользователя</li>
-                        </ul>
-                        
-                        <h4>6. Контакты</h4>
-                        <p>По всем вопросам, связанным с обработкой персональных данных, вы можете обращаться по телефону: <a href="tel:+79197516926">+7 (919) 751-69-26</a></p>
-                    `
-                }
-            };
-            
-            return content[modalType] || {
-                title: 'Информация',
-                content: '<p>Информация временно недоступна.</p>'
-            };
-        }
-        
-        // Подписка на новости
-        function subscribeToNewsletter() {
-            const email = newsletterEmail.value.trim();
-            
-            if (!email) {
-                showSubscriptionMessage('Введите email для подписки', 'error');
-                return;
-            }
-            
-            if (!validateEmail(email)) {
-                showSubscriptionMessage('Введите корректный email адрес', 'error');
-                return;
-            }
-            
-            // Имитация отправки на сервер
-            showSubscriptionMessage('Подписка оформлена! Проверьте вашу почту для подтверждения.', 'success');
-            newsletterEmail.value = '';
-            
-            // Сохраняем в localStorage для демонстрации
-            let subscriptions = JSON.parse(localStorage.getItem('newsletterSubscriptions') || '[]');
-            subscriptions.push({
-                email: email,
-                date: new Date().toISOString()
-            });
-            localStorage.setItem('newsletterSubscriptions', JSON.stringify(subscriptions));
-        }
-        
-        // Показать сообщение о подписке
-        function showSubscriptionMessage(message, type) {
-            subscriptionMessage.textContent = message;
-            subscriptionMessage.style.color = type === 'success' ? '#27ae60' : '#e74c3c';
-            subscriptionMessage.style.display = 'block';
-            
-            setTimeout(() => {
-                subscriptionMessage.style.display = 'none';
-            }, 5000);
-        }
-        
-        // Валидация email
-        function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
-
-        // Render products to the page
+        // Render products to the page with images
         function renderProducts(productsToRender) {
             productsGrid.innerHTML = '';
             
-            if (productsToRender.length === 0) {
-                productsGrid.innerHTML = '<p style="text-align: center; padding: 40px; color: #666; grid-column: 1/-1;">Товары не найдены. Попробуйте изменить фильтры.</p>';
-                return;
-            }
-            
             productsToRender.forEach(product => {
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
                 
                 productCard.innerHTML = `
                     <div class="product-img">
-                        <i class="fas fa-${getProductIcon(product.category)}"></i>
+                        <img src="${product.image}" alt="${product.name}" onerror="this.onerror=null; this.src='assets/images/no-photo.jpg'">
+                    
+                        
+
+
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">${product.name}</h3>
@@ -2171,124 +1808,88 @@
             document.querySelectorAll('.view-details').forEach(button => {
                 button.addEventListener('click', function() {
                     const productId = parseInt(this.getAttribute('data-id'));
-                    const product = products.find(p => p.id === productId);
-                    showProductDetails(product);
+                    showProductDetails(productId);
                 });
             });
         }
-        
-        // Показать детали товара
-        function showProductDetails(product) {
-            const modalData = {
-                title: product.name,
-                content: `
-                    <div style="display: flex; gap: 20px; margin-bottom: 20px;">
-                        <div style="flex: 0 0 150px; height: 150px; background: #f5f7fa; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-${getProductIcon(product.category)}" style="font-size: 3rem; color: #3498db;"></i>
-                        </div>
-                        <div style="flex: 1;">
-                            <h4 style="margin-top: 0;">Описание</h4>
-                            <p>${product.description}</p>
-                            <p><strong>Категория:</strong> ${getCategoryName(product.category)}</p>
-                            <p><strong>Марка авто:</strong> ${getBrandName(product.brand)}</p>
-                            <p><strong>Год выпуска:</strong> ${product.year}</p>
+
+        // Show product details
+        function showProductDetails(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const modal = getProductModal();
+            const modalBody = getModalBody();
+
+            modalBody.innerHTML = `
+                <div class="product-modal-grid">
+                    <div>
+                        <img class="product-modal-image" src="${product.image}" alt="${product.name}" onerror="this.onerror=null; this.src='assets/images/no-photo.jpg'">
+                    </div>
+                    <div class="product-modal-meta">
+                        <span class="product-modal-badge"><i class="fas fa-box-open"></i> ${getCategoryName(product.category)}</span>
+                        <h2 class="product-modal-title">${product.name}</h2>
+                        <p class="product-modal-description">${product.description}</p>
+
+                        <ul class="product-modal-list">
+                            <li><span>Категория</span><strong>${getCategoryName(product.category)}</strong></li>
+                            <li><span>Совместимость</span><strong>${getBrandName(product.brand)}</strong></li>
+                            <li><span>Наличие</span><strong>Уточняйте у менеджера</strong></li>
+                        </ul>
+
+                        <div class="product-modal-price">${formatPrice(product.price)} руб.</div>
+
+                        <div class="product-modal-actions">
+                            <button class="btn" id="modalAddToCartBtn">
+                                <i class="fas fa-cart-plus"></i> Добавить в корзину
+                            </button>
+                            <button class="view-details" id="modalCloseBtn">
+                                <i class="fas fa-times"></i> Закрыть
+                            </button>
                         </div>
                     </div>
-                    <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-                        <h4 style="margin-top: 0; color: #e74c3c;">Цена: ${formatPrice(product.price)} руб.</h4>
-                        <button class="btn" style="padding: 10px 20px; font-size: 0.9rem;" onclick="addToCart(${product.id}); closeInfoModal();">
-                            <i class="fas fa-cart-plus"></i> Добавить в корзину
-                        </button>
-                    </div>
-                    <h4>Характеристики</h4>
-                    <ul>
-                        <li><strong>Артикул:</strong> P+${product.id.toString().padStart(4, '0')}</li>
-                        <li><strong>Гарантия:</strong> 12 месяцев</li>
-                        <li><strong>Наличие:</strong> В наличии на складе</li>
-                        <li><strong>Срок доставки:</strong> 1 день по Ессентукам</li>
-                    </ul>
-                    <h4>Совместимость</h4>
-                    <p>Данная запчасть подходит для следующих моделей автомобилей:</p>
-                    <ul>
-                        <li>${getCompatibilityExamples(product.brand)}</li>
-                    </ul>
-                `
-            };
-            
-            modalTitle.textContent = modalData.title;
-            modalBody.innerHTML = modalData.content;
-            infoModal.classList.add('active');
-        }
-        
-        // Получить название категории
-        function getCategoryName(category) {
-            const categories = {
-                'engine': 'Двигатель',
-                'brakes': 'Тормозная система',
-                'suspension': 'Подвеска',
-                'electrics': 'Электрика',
-                'body': 'Кузовные детали',
-                'chemicals': 'Автохимия',
-                'tires': 'Шины и диски',
-                'exhaust': 'Выхлопная система',
-                'cooling': 'Система охлаждения',
-                'interior': 'Салон'
-            };
-            return categories[category] || category;
-        }
-        
-        // Получить название марки
-        function getBrandName(brand) {
-            const brands = {
-                'toyota': 'Toyota',
-                'bmw': 'BMW',
-                'volkswagen': 'Volkswagen',
-                'hyundai': 'Hyundai',
-                'lada': 'Lada (ВАЗ)',
-                'kia': 'Kia',
-                'nissan': 'Nissan',
-                'mercedes': 'Mercedes',
-                'audi': 'Audi',
-                'ford': 'Ford',
-                'all': 'Все марки'
-            };
-            return brands[brand] || brand;
-        }
-        
-        // Получить примеры совместимости
-        function getCompatibilityExamples(brand) {
-            const examples = {
-                'toyota': 'Toyota Camry (2015-2020), Toyota RAV4 (2013-2019), Toyota Corolla (2014-2019)',
-                'bmw': 'BMW X5 (2010-2015), BMW 3 серии (2005-2012), BMW 5 серии (2010-2017)',
-                'volkswagen': 'Volkswagen Polo (2010-2018), Volkswagen Tiguan (2012-2018), Volkswagen Passat (2011-2015)',
-                'hyundai': 'Hyundai Solaris (2011-2017), Hyundai Creta (2016-2020), Hyundai Tucson (2015-2018)',
-                'lada': 'Lada Vesta (2015-2022), Lada XRAY (2016-2020), Lada Granta (2011-2018)',
-                'kia': 'Kia Rio (2011-2017), Kia Sportage (2010-2016), Kia Optima (2010-2015)',
-                'nissan': 'Nissan Qashqai (2007-2013), Nissan X-Trail (2007-2014), Nissan Almera (2012-2018)',
-                'mercedes': 'Mercedes C-class (2007-2014), Mercedes E-class (2009-2016), Mercedes ML (2005-2011)',
-                'audi': 'Audi A4 (2008-2015), Audi A6 (2005-2011), Audi Q5 (2008-2017)',
-                'ford': 'Ford Focus 3 (2011-2018), Ford Mondeo (2007-2014), Ford Kuga (2008-2012)',
-                'all': 'Универсальная совместимость'
-            };
-            return examples[brand] || 'Уточняйте совместимость у менеджера';
+                </div>
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            document.getElementById('modalAddToCartBtn')?.addEventListener('click', function() {
+                addToCart(product.id);
+            });
+
+            document.getElementById('modalCloseBtn')?.addEventListener('click', closeProductModalFn);
         }
 
-        // Get appropriate icon for product category
-        function getProductIcon(category) {
-            const icons = {
-                engine: 'oil-can',
-                brakes: 'tachometer-alt',
-                suspension: 'car-side',
-                electrics: 'bolt',
-                body: 'car',
-                chemicals: 'flask',
-                tires: 'tire',
-                exhaust: 'smog',
-                cooling: 'fan',
-                interior: 'chair'
+        // Get category name in Russian
+        function getCategoryName(category) {
+            const names = {
+                engine: 'Двигатель',
+                brakes: 'Тормозная система',
+                suspension: 'Подвеска',
+                electrics: 'Электрика',
+                body: 'Кузовные детали',
+                transmission: 'Трансмиссия',
+                cooling: 'Охлаждение',
+                exhaust: 'Выхлопная система'
             };
-            
-            return icons[category] || 'cog';
+            return names[category] || category;
+        }
+
+        // Get brand name in Russian
+        function getBrandName(brand) {
+            const names = {
+                toyota: 'Toyota',
+                bmw: 'BMW',
+                volkswagen: 'Volkswagen',
+                hyundai: 'Hyundai',
+                lada: 'Lada',
+                renault: 'Renault',
+                ford: 'Ford',
+                mercedes: 'Mercedes-Benz',
+                all: 'Универсальный'
+            };
+            return names[brand] || brand;
         }
 
         // Format price with spaces
@@ -2309,7 +1910,16 @@
             // Filter by brand
             const selectedBrand = brandFilter.value;
             if (selectedBrand !== 'all') {
-                filteredProducts = filteredProducts.filter(product => product.brand === selectedBrand);
+                filteredProducts = filteredProducts.filter(product => product.brand === selectedBrand || product.brand === 'all');
+            }
+            
+            // Apply search filter if any
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            if (searchTerm !== '') {
+                filteredProducts = filteredProducts.filter(product => 
+                    product.name.toLowerCase().includes(searchTerm) ||
+                    product.description.toLowerCase().includes(searchTerm)
+                );
             }
             
             // Sort products
@@ -2319,8 +1929,8 @@
             } else if (sortValue === 'price_desc') {
                 filteredProducts.sort((a, b) => b.price - a.price);
             } else if (sortValue === 'popular') {
-                // For demo, just shuffle the array
-                filteredProducts = filteredProducts.sort(() => Math.random() - 0.5);
+                // For demo, sort by ID (as a proxy for popularity)
+                filteredProducts.sort((a, b) => a.id - b.id);
             }
             
             renderProducts(filteredProducts);
@@ -2334,6 +1944,52 @@
 
         function closeCartModal() {
             cartModal.classList.remove('active');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            
+            // Check if product is already in cart
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    quantity: 1,
+                    image: product.image
+                });
+            }
+            
+            updateCart();
+            renderCartItems();
+            
+            // Show notification
+            showNotification(`Товар "${product.name}" добавлен в корзину`);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+            renderCartItems();
+        }
+
+        function updateQuantity(productId, newQuantity) {
+            if (newQuantity < 1) {
+                removeFromCart(productId);
+                return;
+            }
+            
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity = newQuantity;
+            }
+            
+            updateCart();
+            renderCartItems();
         }
 
         function updateCart() {
@@ -2360,7 +2016,7 @@
                 
                 cartItem.innerHTML = `
                     <div class="cart-item-img">
-                        <i class="fas fa-cog"></i>
+                        <img src="${item.image}" alt="${item.name}" onerror="this.onerror=null; this.src='assets/images/no-photo.jpg'">
                     </div>
                     <div class="cart-item-info">
                         <div class="cart-item-title">${item.name}</div>
@@ -2404,62 +2060,331 @@
             });
         }
 
-        // Simulate checkout
-        const checkoutBtn = document.querySelector('.checkout-btn');
-        if (checkoutBtn) {
-            checkoutBtn.addEventListener('click', function() {
-                if (cart.length === 0) {
-                    showNotification('Корзина пуста. Добавьте товары для оформления заказа.', 'error');
-                    return;
-                }
-                
-                const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                showNotification(`Заказ на сумму ${formatPrice(totalPrice)} руб. оформлен! С вами свяжется наш менеджер для подтверждения.`);
-                
-                // Clear cart
-                cart = [];
-                updateCart();
-                renderCartItems();
-                
-                // Close cart after a delay
-                setTimeout(() => {
-                    closeCartModal();
-                }, 2000);
-            });
-        }
-
-        // Добавляем функционал для поиска
-        const searchInput = document.querySelector('.search-box input');
-        const searchButton = document.querySelector('.search-box button');
-        
-        if (searchInput && searchButton) {
-            searchButton.addEventListener('click', performSearch);
-            searchInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    performSearch();
-                }
-            });
-        }
-
-        function performSearch() {
-            const searchTerm = searchInput.value.trim().toLowerCase();
+        // Show notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background-color: var(--success);
+                color: white;
+                padding: 15px 20px;
+                border-radius: var(--border-radius);
+                box-shadow: var(--shadow);
+                z-index: 10000;
+                animation: slideIn 0.3s ease-out;
+                display: flex;
+                align-items: center;
+                max-width: 400px;
+                white-space: pre-line;
+            `;
             
-            if (!searchTerm) {
-                renderProducts(products);
+            notification.innerHTML = `
+                <i class="fas fa-check-circle" style="margin-right: 10px; font-size: 1.2rem;"></i>
+                <span>${message}</span>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-out';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+            
+            // Add CSS for animations
+            if (!document.querySelector('#notification-styles')) {
+                const style = document.createElement('style');
+                style.id = 'notification-styles';
+                style.textContent = `
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                    @keyframes slideOut {
+                        from { transform: translateX(0); opacity: 1; }
+                        to { transform: translateX(100%); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+
+        // Checkout
+        document.getElementById('checkoutBtn').addEventListener('click', function() {
+            if (cart.length === 0) {
+                showNotification('Корзина пуста. Добавьте товары для оформления заказа.');
                 return;
             }
             
-            const filteredProducts = products.filter(product => 
-                product.name.toLowerCase().includes(searchTerm) ||
-                product.description.toLowerCase().includes(searchTerm)
-            );
+            const name = customerName.value.trim();
+            const phone = customerPhone.value.trim();
             
-            renderProducts(filteredProducts);
-            
-            if (filteredProducts.length === 0) {
-                showNotification('По вашему запросу ничего не найдено', 'error');
+            if (!name || !phone) {
+                showNotification('Пожалуйста, заполните ФИО и телефон для оформления заказа');
+                return;
             }
+            
+            // Format order details
+            const orderItems = cart.map(item => `${item.name} - ${item.quantity} шт. - ${formatPrice(item.price * item.quantity)} руб.`).join('\n');
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            showNotification(`Заказ оформлен!\n\nКлиент: ${name}\nТелефон: ${phone}\n\n${orderItems}\n\nИтого: ${formatPrice(totalPrice)} руб.\n\nС вами свяжется наш менеджер для подтверждения.`);
+            
+            // Clear cart
+            cart = [];
+            customerName.value = '';
+            customerPhone.value = '';
+            updateCart();
+            renderCartItems();
+            
+            // Close cart after a delay
+            setTimeout(() => {
+                closeCartModal();
+            }, 5000);
+        });
+    
+        // ---------------- Footer: модальные окна, фильтры, подписка, аккордеон ----------------
+        const footerModalContent = {
+            about: {
+                title: "О компании",
+                body: `
+                    <p><b>Parts+</b> — магазин автозапчастей с быстрым подбором, понятным каталогом и удобным оформлением заказа.</p>
+                    <h4>Что мы делаем</h4>
+                    <ul>
+                        <li>Подбор запчастей по VIN и по параметрам автомобиля</li>
+                        <li>Проверка совместимости и консультации</li>
+                        <li>Самовывоз и доставка по городу и КМВ</li>
+                    </ul>
+                    <h4>Почему нам доверяют</h4>
+                    <ul>
+                        <li>Гарантия на товары и прозрачные условия возврата</li>
+                        <li>Работаем с проверенными брендами и поставщиками</li>
+                        <li>Помогаем подобрать аналог под бюджет</li>
+                    </ul>
+                `
+            },
+            delivery: {
+                title: "Доставка и оплата",
+                body: `
+                    <p>Мы предлагаем несколько вариантов получения заказа — выбирайте удобный.</p>
+                    <h4>Доставка</h4>
+                    <ul>
+                        <li><b>По городу:</b> в день заказа (при наличии товара и оформлении до согласованного времени)</li>
+                        <li><b>По КМВ:</b> от 1 дня (зависит от маршрута и загруженности)</li>
+                        <li><b>Самовывоз:</b> бесплатно из магазина</li>
+                    </ul>
+                    <h4>Оплата</h4>
+                    <ul>
+                        <li>Наличными при получении</li>
+                        <li>Перевод/карта (при наличии возможности в точке выдачи)</li>
+                        <li>Безнал для организаций (по запросу)</li>
+                    </ul>
+                    <p class="muted">Точные условия подтверждает менеджер при оформлении.</p>
+                `
+            },
+            warranty: {
+                title: "Гарантия и возврат",
+                body: `
+                    <p>На все товары действует гарантия в соответствии с условиями производителя и поставщика.</p>
+                    <h4>Гарантия</h4>
+                    <ul>
+                        <li>Стандартно — от <b>6 месяцев</b> (может отличаться по категории товара)</li>
+                        <li>Сохраните чек/накладную и упаковку (желательно)</li>
+                    </ul>
+                    <h4>Возврат</h4>
+                    <ul>
+                        <li>Возврат возможен при сохранении товарного вида и комплектности</li>
+                        <li>Электрооборудование и товары “под заказ” — по индивидуальным условиям</li>
+                        <li>Если ошибка подбора — поможем обменять/вернуть по согласованию</li>
+                    </ul>
+                    <p class="muted">Перед возвратом свяжитесь с нами — мы подскажем порядок действий.</p>
+                `
+            },
+            contacts: {
+                title: "Контакты",
+                body: `
+                    <p>Свяжитесь с нами любым удобным способом.</p>
+                    <ul>
+                        <li><b>Телефон:</b> 8(919) 751-69-26</li>
+                        <li><b>Email:</b> info@partsplus.ru</li>
+                        <li><b>Адрес:</b> г. Ессентуки, ул. Железнодорожная, д. 1</li>
+                        <li><b>Режим работы:</b> ежедневно (уточняйте у менеджера)</li>
+                    </ul>
+                    <p class="muted">Если нужно — подберём запчасти по VIN. Подготовьте VIN и год/модификацию.</p>
+                `
+            },
+            blog: {
+                title: "Блог и статьи",
+                body: `
+                    <p>Раздел полезных материалов (в демо — примеры). Можно расширить до полноценного блога.</p>
+                    <h4>Популярные темы</h4>
+                    <ul>
+                        <li>Как правильно подобрать масло и фильтры</li>
+                        <li>Признаки износа тормозных колодок и дисков</li>
+                        <li>Оригинал vs аналог: когда можно экономить</li>
+                        <li>Подбор деталей по VIN: частые ошибки</li>
+                    </ul>
+                    <p class="muted">Хотите — сделаю отдельную страницу блога и карточки статей.</p>
+                `
+            },
+            privacy: {
+                title: "Политика конфиденциальности",
+                body: `
+                    <p>В демо-версии приведён краткий текст. Для реального сайта лучше вставить полный документ.</p>
+                    <h4>Какие данные мы можем собирать</h4>
+                    <ul>
+                        <li>ФИО и телефон для оформления заказа</li>
+                        <li>Email для отправки уведомлений/КП и подписки</li>
+                        <li>Технические данные (cookies) для работы сайта</li>
+                    </ul>
+                    <h4>Как используем</h4>
+                    <ul>
+                        <li>Для обработки заказа и связи с клиентом</li>
+                        <li>Для улучшения качества сервиса</li>
+                        <li>Для отправки новостей — только с вашего согласия</li>
+                    </ul>
+                    <p class="muted">Вы можете запросить удаление данных, написав на email магазина.</p>
+                `
+            }
+        };
+
+        const siteModalOverlay = document.getElementById('siteModalOverlay');
+        const siteModalTitle = document.getElementById('siteModalTitle');
+        const siteModalBody = document.getElementById('siteModalBody');
+        const siteModalClose = document.getElementById('siteModalClose');
+
+        function openSiteModal(key){
+            const data = footerModalContent[key];
+            if(!data) return;
+            siteModalTitle.textContent = data.title;
+            siteModalBody.innerHTML = data.body;
+            siteModalOverlay.style.display = 'flex';
+            siteModalOverlay.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
         }
-    </script>
+        function closeSiteModal(){
+            siteModalOverlay.style.display = 'none';
+            siteModalOverlay.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        siteModalClose?.addEventListener('click', closeSiteModal);
+        siteModalOverlay?.addEventListener('click', (e)=>{ if(e.target === siteModalOverlay) closeSiteModal(); });
+        document.addEventListener('keydown', (e)=>{
+            if(e.key === 'Escape' && siteModalOverlay && siteModalOverlay.style.display === 'flex') closeSiteModal();
+        });
+
+        // Footer "Информация" links -> open modal
+        document.querySelectorAll('.footer-links a[data-modal]').forEach(a=>{
+            a.addEventListener('click', (e)=>{
+                e.preventDefault();
+                openSiteModal(a.dataset.modal);
+            });
+        });
+
+        // Footer "Категории" links -> scroll to catalog + apply filter
+        document.querySelectorAll('.footer-links a[data-filter-category]').forEach(a=>{
+            a.addEventListener('click', ()=>{
+                const cat = a.dataset.filterCategory;
+                if (cat) {
+                    categoryFilter.value = cat;
+                    brandFilter.value = 'all';
+                    sortBy.value = 'default';
+                    searchInput.value = '';
+                    filterProducts();
+                }
+            });
+        });
+
+        // Footer subscription (email)
+        const footerEmail = document.getElementById('footerEmail');
+        const footerSubscribeBtn = document.getElementById('footerSubscribeBtn');
+        function validEmail(v){
+            return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(v||'').trim());
+        }
+        footerSubscribeBtn?.addEventListener('click', (e)=>{
+            e.preventDefault();
+            const v = (footerEmail?.value || '').trim();
+            if(!v || !validEmail(v)){
+                showNotification('Введите корректный email для подписки');
+                return;
+            }
+            showNotification(`Спасибо! Вы подписались на новости: ${v}`);
+            footerEmail.value = '';
+        });
+        footerEmail?.addEventListener('keypress', (e)=>{
+            if(e.key === 'Enter'){
+                e.preventDefault();
+                footerSubscribeBtn?.click();
+            }
+        });
+
+        // Footer accordion on mobile: open/close columns by clicking title
+        document.querySelectorAll('footer .footer-column').forEach(col=>{
+            const h3 = col.querySelector('h3');
+            if(!h3) return;
+            h3.addEventListener('click', ()=>{
+                if (window.matchMedia('(max-width: 768px)').matches){
+                    col.classList.toggle('open');
+                }
+            });
+        });
+
+        // Copyright year
+        const cy = document.getElementById('copyrightYear');
+        if(cy) cy.textContent = new Date().getFullYear();
+
+
+        // ---------------- Footer: раскрывающиеся пункты "Информация" ----------------
+        (function(){
+            const items = document.querySelectorAll('.footer-acc-item');
+            if(!items.length) return;
+
+            function closeAll(except){
+                items.forEach(it=>{
+                    if(it === except) return;
+                    it.classList.remove('open');
+                    const btn = it.querySelector('.footer-acc-btn');
+                    if(btn) btn.setAttribute('aria-expanded','false');
+                });
+            }
+
+            items.forEach(it=>{
+                const btn = it.querySelector('.footer-acc-btn');
+                if(!btn) return;
+                btn.addEventListener('click', ()=>{
+                    const isOpen = it.classList.contains('open');
+                    closeAll(it);
+                    it.classList.toggle('open', !isOpen);
+                    btn.setAttribute('aria-expanded', String(!isOpen));
+                });
+            });
+        })();
+
+</script>
+
+
+    <!-- Product Details Modal -->
+    <div class="product-modal" id="productModal" aria-hidden="true">
+        <div class="product-modal-content" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
+            <button class="close-product-modal" id="closeProductModal" aria-label="Закрыть">&times;</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Site Modal (Footer / Info) -->
+    <div class="site-modal-overlay" id="siteModalOverlay" aria-hidden="true">
+        <div class="site-modal" role="dialog" aria-modal="true" aria-labelledby="siteModalTitle">
+            <div class="site-modal-header">
+                <h3 id="siteModalTitle">Информация</h3>
+                <button class="site-modal-close" id="siteModalClose" aria-label="Закрыть">&times;</button>
+            </div>
+            <div class="site-modal-body" id="siteModalBody"></div>
+        </div>
+    </div>
+
 </body>
 </html>
